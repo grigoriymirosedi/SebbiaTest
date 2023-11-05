@@ -1,5 +1,4 @@
-Npackage com.example.sebbiatest
-
+import com.example.sebbiatest.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
