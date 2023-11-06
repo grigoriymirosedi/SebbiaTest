@@ -1,6 +1,6 @@
-package com.example.sebbiatest.data.dto
+package com.example.sebbiatest.domain.model
 
-data class NewsPostItemDTO(
+data class NewsDetails(
     val id: Int,
     val title: String,
     val date: String,

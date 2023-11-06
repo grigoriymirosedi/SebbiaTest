@@ -1,3 +1,5 @@
+package com.example.sebbiatest.ui.activities
+
 import com.example.sebbiatest.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
