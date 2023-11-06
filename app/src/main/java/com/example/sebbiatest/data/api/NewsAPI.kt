@@ -10,16 +10,16 @@ import retrofit2.http.Query
 
 interface NewsAPI {
     @GET("v1/news/categories")
-    fun getNewsCategories(): Response<List<NewsCategoryDTO>>
+    suspend fun getNewsCategories(): Response<List<NewsCategoryDTO>>
 
     @GET("v1/news/categories/{id}/news")
-    fun getCategoryNewsById(
+    suspend fun getCategoryNewsById(
         @Path("id") searchById: Int,
         @Query("page") pageNumber: Int = 1
     ): Response<List<NewsAnnotationDTO>>
 
     @GET("v1/news/details")
-    fun getNewsDetails(
+    suspend fun getNewsDetails(
         @Query("id") newsId: Int
     ): Response<NewsDetailsDTO>
 }
