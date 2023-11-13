@@ -3,6 +3,7 @@ package com.example.sebbiatest.data.repository
 import com.example.sebbiatest.data.api.NewsAPI
 import com.example.sebbiatest.data.dto.NewsAnnotationDTO
 import com.example.sebbiatest.data.dto.NewsCategoryDTO
+import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
 import com.example.sebbiatest.data.dto.NewsDetailsDTO
 import com.example.sebbiatest.domain.repository.NewsRepository
 import retrofit2.Response
@@ -11,7 +12,7 @@ class NewsRepositoryImpl(
     private val newsAPI: NewsAPI
 ): NewsRepository {
 
-    override suspend fun getNewsCategory(): Response<List<NewsCategoryDTO>> {
+    override suspend fun getNewsCategory(): Response<NewsCategoryResponseDTO> {
         return newsAPI.getNewsCategories()
     }
 
