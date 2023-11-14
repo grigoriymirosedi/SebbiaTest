@@ -2,6 +2,7 @@ package com.example.sebbiatest.data.repository
 
 import com.example.sebbiatest.data.api.NewsAPI
 import com.example.sebbiatest.data.dto.NewsAnnotationDTO
+import com.example.sebbiatest.data.dto.NewsAnnotationResponseDTO
 import com.example.sebbiatest.data.dto.NewsCategoryDTO
 import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
 import com.example.sebbiatest.data.dto.NewsDetailsDTO
@@ -19,7 +20,7 @@ class NewsRepositoryImpl(
     override suspend fun getCategoryNewsById(
         categoryId: Int,
         pageNumber: Int,
-    ): Response<List<NewsAnnotationDTO>> {
+    ): Response<NewsAnnotationResponseDTO> {
         return newsAPI.getCategoryNewsById(categoryId, pageNumber)
     }
 

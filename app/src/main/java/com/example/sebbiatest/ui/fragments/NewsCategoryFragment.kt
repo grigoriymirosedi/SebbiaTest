@@ -1,42 +1,34 @@
 package com.example.sebbiatest.ui.fragments
 
+import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.sebbiatest.R
 import com.example.sebbiatest.app.App
 import com.example.sebbiatest.core.util.Resource
 import com.example.sebbiatest.databinding.FragmentNewsCategoryBinding
+import com.example.sebbiatest.domain.model.NewsCategory
 import com.example.sebbiatest.domain.repository.NewsRepository
-import com.example.sebbiatest.ui.viewmodels.NewsViewModel
-import com.example.sebbiatest.ui.viewmodels.ViewModelFactory
+import com.example.sebbiatest.ui.viewmodels.NewsCategoryViewModel
+import com.example.sebbiatest.ui.viewmodels.NewsCategoryViewModelFactory
 import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [NewsCategoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class NewsCategoryFragment : Fragment() {
+class NewsCategoryFragment : Fragment(), View.OnClickListener {
 
     @Inject lateinit var newsRepository: NewsRepository
 
-    private lateinit var viewModel: NewsViewModel
+    private lateinit var viewModel: NewsCategoryViewModel
 
     private var _binding: FragmentNewsCategoryBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var newsCategoryInfo: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -49,13 +41,13 @@ class NewsCategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelFactory(repository = newsRepository).create(NewsViewModel::class.java)
-        newsCategoryInfo = binding.newsCategoryInfoTv
+        initButtonListeners()
+        viewModel = NewsCategoryViewModelFactory(repository = newsRepository).create(NewsCategoryViewModel::class.java)
         viewModel.newsCategory.observe(viewLifecycleOwner) { newsCategoryResponse ->
             when (newsCategoryResponse) {
                 is Resource.Success -> newsCategoryResponse.data?.let {
                     //TODO: hideprogressbar
-                    newsCategoryInfo.text = it.toString()
+                    initViews(it)
                 }
 
                 is Resource.Loading -> {
@@ -76,5 +68,23 @@ class NewsCategoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun initButtonListeners() {
+        binding.newsCategoryBtn1.setOnClickListener(this)
+        binding.newsCategoryBtn2.setOnClickListener(this)
+        binding.newsCategoryBtn3.setOnClickListener(this)
+    }
+
+    private fun initViews(list: List<NewsCategory>) {
+        //initializing buttons
+        binding.newsCategoryBtn1.text = list[0].name
+        binding.newsCategoryBtn2.text = list[1].name
+        binding.newsCategoryBtn3.text = list[2].name
+    }
+
+    override fun onClick(v: View?) {
+        //TODO: implement id passing
+        findNavController().navigate(R.id.action_newsCategoryFragment_to_newsAnnotationFragment)
     }
 }

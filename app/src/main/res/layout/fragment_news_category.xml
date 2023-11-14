@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="3"
     tools:context=".ui.fragments.NewsCategoryFragment">
 
-    <TextView
-        android:id="@+id/news_category_info_tv"
-        android:layout_width="wrap_content"
+
+    <Button
+        android:id="@+id/news_category_btn1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-</FrameLayout>
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="150dp"
+        android:layout_weight="1"
+        android:text="Много новостей"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/news_category_btn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
+        android:layout_weight="1"
+        android:text="Немного новостей"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/news_category_btn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_weight="1"
+        android:text="Нет новостей"
+        android:textSize="24sp" />
+</LinearLayout>

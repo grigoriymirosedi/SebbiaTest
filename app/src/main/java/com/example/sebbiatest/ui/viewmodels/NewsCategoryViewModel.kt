@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sebbiatest.core.util.Resource
-import com.example.sebbiatest.data.dto.NewsCategoryDTO
 import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
 import com.example.sebbiatest.data.dto.toNewsCategory
 import com.example.sebbiatest.domain.model.NewsCategory
@@ -14,7 +13,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
 
-class NewsViewModel @Inject constructor(
+class NewsCategoryViewModel @Inject constructor(
     private val newsRepository: NewsRepository
 ): ViewModel() {
     private val _newsCategory: MutableLiveData<Resource<List<NewsCategory>>> = MutableLiveData()

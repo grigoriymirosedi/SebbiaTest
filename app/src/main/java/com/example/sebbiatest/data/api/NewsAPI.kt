@@ -1,6 +1,7 @@
 package com.example.sebbiatest.data.api
 
 import com.example.sebbiatest.data.dto.NewsAnnotationDTO
+import com.example.sebbiatest.data.dto.NewsAnnotationResponseDTO
 import com.example.sebbiatest.data.dto.NewsDetailsDTO
 import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
 import retrofit2.Response
@@ -16,7 +17,7 @@ interface NewsAPI {
     suspend fun getCategoryNewsById(
         @Path("id") searchById: Int,
         @Query("page") pageNumber: Int = 1
-    ): Response<List<NewsAnnotationDTO>>
+    ): Response<NewsAnnotationResponseDTO>
 
     @GET("v1/news/details")
     suspend fun getNewsDetails(

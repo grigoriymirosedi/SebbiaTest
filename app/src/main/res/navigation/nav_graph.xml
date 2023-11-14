@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newsCategoryFragment">
+    <fragment
+        android:id="@+id/newsCategoryFragment"
+        android:name="com.example.sebbiatest.ui.fragments.NewsCategoryFragment"
+        android:label="fragment_news_category"
+        tools:layout="@layout/fragment_news_category" >
+        <action
+            android:id="@+id/action_newsCategoryFragment_to_newsAnnotationFragment"
+            app:destination="@id/newsAnnotationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsAnnotationFragment"
+        android:name="com.example.sebbiatest.ui.fragments.NewsAnnotationFragment"
+        android:label="fragment_news_annotation"
+        tools:layout="@layout/fragment_news_annotation" >
+        <action
+            android:id="@+id/action_newsAnnotationFragment_to_newsCategoryFragment2"
+            app:destination="@id/newsCategoryFragment" />
+        <action
+            android:id="@+id/action_newsAnnotationFragment_to_newsDetailsFragment"
+            app:destination="@id/newsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailsFragment"
+        android:name="com.example.sebbiatest.ui.fragments.NewsDetailsFragment"
+        android:label="fragment_news_details"
+        tools:layout="@layout/fragment_news_details" >
+        <action
+            android:id="@+id/action_newsDetailsFragment_to_newsAnnotationFragment"
+            app:destination="@id/newsAnnotationFragment" />
+    </fragment>
+</navigation>
