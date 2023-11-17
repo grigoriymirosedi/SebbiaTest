@@ -11,7 +11,8 @@
         tools:layout="@layout/fragment_news_category" >
         <action
             android:id="@+id/action_newsCategoryFragment_to_newsAnnotationFragment"
-            app:destination="@id/newsAnnotationFragment" />
+            app:destination="@id/newsAnnotationFragment">
+        </action>
     </fragment>
     <fragment
         android:id="@+id/newsAnnotationFragment"
@@ -24,6 +25,9 @@
         <action
             android:id="@+id/action_newsAnnotationFragment_to_newsDetailsFragment"
             app:destination="@id/newsDetailsFragment" />
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/newsDetailsFragment"

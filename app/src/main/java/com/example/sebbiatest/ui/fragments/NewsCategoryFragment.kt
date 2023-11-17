@@ -42,7 +42,8 @@ class NewsCategoryFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initButtonListeners()
-        viewModel = NewsCategoryViewModelFactory(repository = newsRepository).create(NewsCategoryViewModel::class.java)
+        viewModel =
+            NewsCategoryViewModelFactory(repository = newsRepository).create(NewsCategoryViewModel::class.java)
         viewModel.newsCategory.observe(viewLifecycleOwner) { newsCategoryResponse ->
             when (newsCategoryResponse) {
                 is Resource.Success -> newsCategoryResponse.data?.let {
@@ -71,20 +72,44 @@ class NewsCategoryFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initButtonListeners() {
-        binding.newsCategoryBtn1.setOnClickListener(this)
-        binding.newsCategoryBtn2.setOnClickListener(this)
-        binding.newsCategoryBtn3.setOnClickListener(this)
+        binding.apply {
+            newsCategoryBtn1.setOnClickListener(this@NewsCategoryFragment)
+            newsCategoryBtn2.setOnClickListener(this@NewsCategoryFragment)
+            newsCategoryBtn3.setOnClickListener(this@NewsCategoryFragment)
+        }
     }
 
     private fun initViews(list: List<NewsCategory>) {
         //initializing buttons
-        binding.newsCategoryBtn1.text = list[0].name
-        binding.newsCategoryBtn2.text = list[1].name
-        binding.newsCategoryBtn3.text = list[2].name
+        binding.apply {
+            newsCategoryBtn1.text = list[0].name
+            newsCategoryBtn2.text = list[1].name
+            newsCategoryBtn3.text = list[2].name
+        }
     }
 
     override fun onClick(v: View?) {
         //TODO: implement id passing
-        findNavController().navigate(R.id.action_newsCategoryFragment_to_newsAnnotationFragment)
+        val action = when (v?.id) {
+            binding.newsCategoryBtn1.id -> NewsCategoryFragmentDirections.actionNewsCategoryFragmentToNewsAnnotationFragment(
+                NEWS_CATEGORY_ID_1
+            )
+
+            binding.newsCategoryBtn2.id -> NewsCategoryFragmentDirections.actionNewsCategoryFragmentToNewsAnnotationFragment(
+                NEWS_CATEGORY_ID_2
+            )
+
+            binding.newsCategoryBtn3.id -> NewsCategoryFragmentDirections.actionNewsCategoryFragmentToNewsAnnotationFragment(
+                NEWS_CATEGORY_ID_3
+            )
+            else -> throw IllegalArgumentException("Undefined behaviour")
+        }
+        findNavController().navigate(action)
+    }
+
+    companion object {
+        const val NEWS_CATEGORY_ID_1 = 0
+        const val NEWS_CATEGORY_ID_2 = 1
+        const val NEWS_CATEGORY_ID_3 = 2
     }
 }

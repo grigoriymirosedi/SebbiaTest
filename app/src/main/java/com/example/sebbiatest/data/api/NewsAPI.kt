@@ -16,7 +16,7 @@ interface NewsAPI {
     @GET("v1/news/categories/{id}/news")
     suspend fun getCategoryNewsById(
         @Path("id") searchById: Int,
-        @Query("page") pageNumber: Int = 1
+        @Query("page") pageNumber: Int = 0
     ): Response<NewsAnnotationResponseDTO>
 
     @GET("v1/news/details")
