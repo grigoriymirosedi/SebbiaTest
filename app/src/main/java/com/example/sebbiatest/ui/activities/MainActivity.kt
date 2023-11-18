@@ -1,15 +1,9 @@
 package com.example.sebbiatest.ui.activities
 
-import com.example.sebbiatest.R
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
 import com.example.sebbiatest.app.App
 import com.example.sebbiatest.databinding.ActivityMainBinding
-import com.example.sebbiatest.databinding.FragmentNewsCategoryBinding
 
 class MainActivity : AppCompatActivity(){
 

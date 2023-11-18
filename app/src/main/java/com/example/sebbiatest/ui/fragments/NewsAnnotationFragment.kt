@@ -1,23 +1,19 @@
 package com.example.sebbiatest.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sebbiatest.app.App
-import com.example.sebbiatest.core.util.Resource
 import com.example.sebbiatest.databinding.FragmentNewsAnnotationBinding
-import com.example.sebbiatest.domain.model.NewsAnnotation
 import com.example.sebbiatest.domain.repository.NewsRepository
 import com.example.sebbiatest.ui.adapters.NewsAnnotationAdapter
 import com.example.sebbiatest.ui.viewmodels.NewsAnnotationViewModel
 import com.example.sebbiatest.ui.viewmodels.factories.NewsViewModelFactory
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class NewsAnnotationFragment : Fragment() {

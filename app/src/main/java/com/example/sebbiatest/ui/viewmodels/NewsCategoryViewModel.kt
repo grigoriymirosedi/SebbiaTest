@@ -25,7 +25,6 @@ class NewsCategoryViewModel @Inject constructor(
     }
 
     private fun fetchNewsCategory() = viewModelScope.launch {
-        _newsCategory.postValue(Resource.Loading())
         val newsResponse = newsRepository.getNewsCategory()
         _newsCategory.postValue(handleResponse(newsResponse))
     }

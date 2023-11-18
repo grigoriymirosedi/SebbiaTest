@@ -5,11 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sebbiatest.core.util.Resource
-import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
 import com.example.sebbiatest.data.dto.NewsDetailsResponseDTO
-import com.example.sebbiatest.data.dto.toNewsCategory
 import com.example.sebbiatest.data.dto.toNewsDetails
-import com.example.sebbiatest.domain.model.NewsCategory
 import com.example.sebbiatest.domain.model.NewsDetails
 import com.example.sebbiatest.domain.repository.NewsRepository
 import kotlinx.coroutines.launch

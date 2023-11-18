@@ -1,8 +1,6 @@
 package com.example.sebbiatest.data.api
 
-import com.example.sebbiatest.data.dto.NewsAnnotationDTO
 import com.example.sebbiatest.data.dto.NewsAnnotationResponseDTO
-import com.example.sebbiatest.data.dto.NewsDetailsDTO
 import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
 import com.example.sebbiatest.data.dto.NewsDetailsResponseDTO
 import retrofit2.Response

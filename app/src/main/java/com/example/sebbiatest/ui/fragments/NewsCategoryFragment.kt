@@ -1,13 +1,13 @@
 package com.example.sebbiatest.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.sebbiatest.R
 import com.example.sebbiatest.app.App
 import com.example.sebbiatest.core.util.Resource
 import com.example.sebbiatest.databinding.FragmentNewsCategoryBinding
@@ -44,15 +44,12 @@ class NewsCategoryFragment : Fragment(), View.OnClickListener {
             when (newsCategoryResponse) {
                 is Resource.Success -> newsCategoryResponse.data?.let {
                     initViews(it)
+                    Log.d("123123", "Check connection")
                 }
-
-                is Resource.Loading -> {
-
-                }
-
-                is Resource.Error -> {
-                    showErrorMessage()
-                }
+                else -> Toast.makeText(requireContext(),
+                    "An error occured. Please check the Internet connection"
+                    , Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
