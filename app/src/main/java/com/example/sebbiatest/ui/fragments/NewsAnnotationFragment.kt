@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sebbiatest.app.App
 import com.example.sebbiatest.databinding.FragmentNewsAnnotationBinding
@@ -14,6 +16,8 @@ import com.example.sebbiatest.domain.repository.NewsRepository
 import com.example.sebbiatest.ui.adapters.NewsAnnotationAdapter
 import com.example.sebbiatest.ui.viewmodels.NewsAnnotationViewModel
 import com.example.sebbiatest.ui.viewmodels.factories.NewsViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NewsAnnotationFragment : Fragment() {
@@ -56,6 +60,11 @@ class NewsAnnotationFragment : Fragment() {
         binding.newsAnnotationRV.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = newsAnnotationAdapter
+        }
+        lifecycleScope.launch {
+            newsAnnotationAdapter.loadStateFlow.collectLatest { loadStates ->
+                binding.newsAnnotationPB.isVisible = loadStates.refresh is LoadState.Loading
+            }
         }
     }
 
