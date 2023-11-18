@@ -18,7 +18,7 @@ class NetworkModule {
 
     @Provides
     fun provideGsonConverter(): Gson {
-        return Gson()
+        return GsonBuilder().setDateFormat("yyyy-MM-dd").create()
     }
 
     @Provides
