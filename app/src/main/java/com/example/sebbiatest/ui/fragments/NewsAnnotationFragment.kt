@@ -7,14 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
-import com.example.sebbiatest.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sebbiatest.app.App
 import com.example.sebbiatest.core.util.Resource
 import com.example.sebbiatest.databinding.FragmentNewsAnnotationBinding
+import com.example.sebbiatest.domain.model.NewsAnnotation
 import com.example.sebbiatest.domain.repository.NewsRepository
+import com.example.sebbiatest.ui.adapters.NewsAnnotationAdapter
 import com.example.sebbiatest.ui.viewmodels.NewsAnnotationViewModel
-import com.example.sebbiatest.ui.viewmodels.NewsCategoryViewModel
-import com.example.sebbiatest.ui.viewmodels.NewsViewModelFactory
+import com.example.sebbiatest.ui.viewmodels.factories.NewsViewModelFactory
 import javax.inject.Inject
 
 class NewsAnnotationFragment : Fragment() {
@@ -50,14 +51,16 @@ class NewsAnnotationFragment : Fragment() {
         viewModel.newsAnnotation.observe(viewLifecycleOwner) { newsAnnotationResponse ->
             when (newsAnnotationResponse) {
                 is Resource.Success -> {
-                    binding.newsAnnotationTV.text = newsAnnotationResponse.data.toString()
+                    hideProgressBar()
+                    initRecyclerView(newsAnnotationResponse.data!!)
                 }
 
                 is Resource.Loading -> {
-
+                    showProgressBar()
                 }
 
                 is Resource.Error -> {
+                    hideProgressBar()
                     Toast.makeText(
                         requireContext(),
                         newsAnnotationResponse.message,
@@ -66,6 +69,20 @@ class NewsAnnotationFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun initRecyclerView(list: List<NewsAnnotation>) {
+        binding.newsAnnotationRV.adapter = NewsAnnotationAdapter(list)
+        binding.newsAnnotationRV.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun hideProgressBar() {
+        binding.newsAnnotationPB.visibility = View.INVISIBLE
+        binding.newsAnnotationRV.visibility = View.VISIBLE
+    }
+
+    private fun showProgressBar() {
+        binding.newsAnnotationPB.visibility = View.VISIBLE
     }
 
     override fun onDestroyView() {

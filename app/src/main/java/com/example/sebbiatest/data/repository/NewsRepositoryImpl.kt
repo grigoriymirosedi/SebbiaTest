@@ -8,9 +8,10 @@ import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
 import com.example.sebbiatest.data.dto.NewsDetailsDTO
 import com.example.sebbiatest.domain.repository.NewsRepository
 import retrofit2.Response
+import javax.inject.Inject
 
-class NewsRepositoryImpl(
-    private val newsAPI: NewsAPI
+class NewsRepositoryImpl @Inject constructor(
+    val newsAPI: NewsAPI
 ): NewsRepository {
 
     override suspend fun getNewsCategory(): Response<NewsCategoryResponseDTO> {

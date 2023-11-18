@@ -1,24 +1,19 @@
 package com.example.sebbiatest.ui.fragments
 
-import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import com.example.sebbiatest.R
 import com.example.sebbiatest.app.App
 import com.example.sebbiatest.core.util.Resource
 import com.example.sebbiatest.databinding.FragmentNewsCategoryBinding
 import com.example.sebbiatest.domain.model.NewsCategory
 import com.example.sebbiatest.domain.repository.NewsRepository
 import com.example.sebbiatest.ui.viewmodels.NewsCategoryViewModel
-import com.example.sebbiatest.ui.viewmodels.NewsCategoryViewModelFactory
+import com.example.sebbiatest.ui.viewmodels.factories.NewsCategoryViewModelFactory
 import javax.inject.Inject
 
 class NewsCategoryFragment : Fragment(), View.OnClickListener {
