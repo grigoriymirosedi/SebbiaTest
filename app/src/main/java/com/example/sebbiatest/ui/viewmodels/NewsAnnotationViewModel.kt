@@ -23,5 +23,5 @@ class NewsAnnotationViewModel(private val categoryId: Int, private val newsRepos
     val newsList = Pager(PagingConfig(5 )) {
         NewsAnnotationPagingResource(categoryId = categoryId, newsRepository = newsRepository)
     }.flow.cachedIn(viewModelScope)
-    
+
 }

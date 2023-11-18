@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.sebbiatest.R
 import com.example.sebbiatest.app.App
 import com.example.sebbiatest.core.util.Resource
 import com.example.sebbiatest.databinding.FragmentNewsCategoryBinding
@@ -42,7 +43,6 @@ class NewsCategoryFragment : Fragment(), View.OnClickListener {
         viewModel.newsCategory.observe(viewLifecycleOwner) { newsCategoryResponse ->
             when (newsCategoryResponse) {
                 is Resource.Success -> newsCategoryResponse.data?.let {
-                    //TODO: hideprogressbar
                     initViews(it)
                 }
 
@@ -51,11 +51,7 @@ class NewsCategoryFragment : Fragment(), View.OnClickListener {
                 }
 
                 is Resource.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        newsCategoryResponse.message,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    showErrorMessage()
                 }
             }
         }
@@ -64,6 +60,11 @@ class NewsCategoryFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showErrorMessage(){
+        binding.apply {
+        }
     }
 
     private fun initButtonListeners() {

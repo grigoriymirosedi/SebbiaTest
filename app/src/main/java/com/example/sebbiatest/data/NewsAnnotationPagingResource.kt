@@ -19,7 +19,6 @@ class NewsAnnotationPagingResource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NewsAnnotation> {
         try {
             val pageNumber = params.key ?: 0
-            val pageSize = params.loadSize
             val response =
                 newsRepository.getCategoryNewsById(categoryId = categoryId, pageNumber = pageNumber)
 

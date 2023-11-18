@@ -37,5 +37,17 @@
         <action
             android:id="@+id/action_newsDetailsFragment_to_newsAnnotationFragment"
             app:destination="@id/newsAnnotationFragment" />
+        <argument
+            android:name="newsId"
+            app:argType="integer" />
+        <argument
+            android:name="newsTitle"
+            app:argType="string" />
+        <argument
+            android:name="newsShortDescription"
+            app:argType="string" />
+        <argument
+            android:name="newsDate"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.example.sebbiatest.di
 import com.example.sebbiatest.ui.activities.MainActivity
 import com.example.sebbiatest.ui.fragments.NewsAnnotationFragment
 import com.example.sebbiatest.ui.fragments.NewsCategoryFragment
+import com.example.sebbiatest.ui.fragments.NewsDetailsFragment
 import dagger.Component
 
 
@@ -11,4 +12,5 @@ interface AppComponent {
     fun inject(activity: MainActivity)
     fun inject(fragment: NewsCategoryFragment)
     fun inject(fragment: NewsAnnotationFragment)
+    fun inject(fragment: NewsDetailsFragment)
 }

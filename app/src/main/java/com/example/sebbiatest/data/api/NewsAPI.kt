@@ -4,6 +4,7 @@ import com.example.sebbiatest.data.dto.NewsAnnotationDTO
 import com.example.sebbiatest.data.dto.NewsAnnotationResponseDTO
 import com.example.sebbiatest.data.dto.NewsDetailsDTO
 import com.example.sebbiatest.data.dto.NewsCategoryResponseDTO
+import com.example.sebbiatest.data.dto.NewsDetailsResponseDTO
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -22,5 +23,5 @@ interface NewsAPI {
     @GET("v1/news/details")
     suspend fun getNewsDetails(
         @Query("id") newsId: Int
-    ): Response<NewsDetailsDTO>
+    ): Response<NewsDetailsResponseDTO>
 }
