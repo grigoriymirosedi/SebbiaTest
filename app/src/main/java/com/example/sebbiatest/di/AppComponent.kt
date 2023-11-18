@@ -6,7 +6,7 @@ import com.example.sebbiatest.ui.fragments.NewsCategoryFragment
 import dagger.Component
 
 
-@Component(modules = [NetworkModule::class, NetworkModule::class, RepositoryModule::class])
+@Component(modules = [NetworkModule::class, RepositoryModule::class, AdaptersModule::class])
 interface AppComponent {
     fun inject(activity: MainActivity)
     fun inject(fragment: NewsCategoryFragment)
